@@ -9,6 +9,7 @@ namespace DataProviderIntegrationTests
         [TestMethod]
         public void TestMethod1()
         {
+            
         }
     }
 }
