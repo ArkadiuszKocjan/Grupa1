@@ -13,17 +13,25 @@ namespace GrepEngineUnitTests
 
             var grep = new Grep(new[]
             {
-                "marxk", "szymon"
+                "marxk", 
+                "szymoxkn",
+                "szyxmon",
+                "sxkzyxmon",
+                "sxkzyxmo nx xk xk",
+                "",
+                " ",
+                "\\n",
+
             });
 
-            const string token = "x";
+            const string token = "xk";
 
             //Act
 
             int result = grep.CountTokenOccurancesInAllLines(token);
 
             //Assert
-            Assert.AreEqual(1, result);
+            Assert.AreEqual(6, result);
         }
     }
 }
