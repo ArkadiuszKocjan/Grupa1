@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataProvider
 {
-    public class Class1
+    interface IDownloader
     {
+        IEnumerable<string> DownloadWebpageAsText(string url, string targetFileName);
     }
 }
