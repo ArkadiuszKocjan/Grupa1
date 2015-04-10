@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GrepEngine
@@ -27,9 +28,9 @@ namespace GrepEngine
             var currentStartIndex = 0;
             var occurancesCount = 0;
 
-            while (currentStartIndex < line.Length)
+            while (true)
             {
-                var foundIndex = line.IndexOf(line, currentStartIndex);
+                var foundIndex = line.IndexOf(token, currentStartIndex, StringComparison.Ordinal);
                 if (foundIndex == -1)
                     break;
 

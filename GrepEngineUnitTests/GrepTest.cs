@@ -11,19 +11,19 @@ namespace GrepEngineUnitTests
         {
             //Assign
 
-            var Grep = new Grep(new[]
+            var grep = new Grep(new[]
             {
                 "marxk", "szymon"
             });
 
-            string token = "x";
+            const string token = "x";
 
             //Act
 
-            int amount = Grep.CountTokenOccurancesInAllLines(token);
+            int result = grep.CountTokenOccurancesInAllLines(token);
 
             //Assert
-            Assert.AreEqual(1, amount);
+            Assert.AreEqual(1, result);
         }
     }
 }
