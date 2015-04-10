@@ -1,5 +1,6 @@
 ﻿using GrepEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace GrepEngineUnitTests
 {
@@ -11,6 +12,8 @@ namespace GrepEngineUnitTests
         {
             //Assign
 
+            var mock = new Mock<ILogger>();
+
             var grep = new Grep(new[]
             {
                 "marxk", 
@@ -21,8 +24,7 @@ namespace GrepEngineUnitTests
                 "",
                 " ",
                 "\\n",
-
-            });
+            }, mock.Object);
 
             const string token = "xk";
 
