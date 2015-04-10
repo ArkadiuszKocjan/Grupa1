@@ -8,6 +8,7 @@ namespace GrepConsole
 {
     public class ArgsList
     {
+        public bool SearchWord { get; set; }
         public bool CountWords { get; set; }
         public string URL { get; set; }
         public string Word { get; set; }

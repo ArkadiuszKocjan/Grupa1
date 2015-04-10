@@ -9,34 +9,52 @@ namespace GrepConsole
     public class ArgumentParser
     {
         string[] _args;
+        ArgsList _argsList;
+        int count;
 
         public ArgumentParser(string[] args)
         {
             _args = args;
+            _argsList = new ArgsList();
+            count = 1;
         }
 
         public ArgsList Parse()
         {
-            ArgsList ArgsList = new ArgsList();
+            _argsList.URL = _args[0];
 
             if (_args.Contains("-c"))
             {
-                ArgsList.CountWords = true;
+                _argsList.CountWords = true;
+                count++;
             }
             else
             {
-                ArgsList.CountWords = false;
+                _argsList.CountWords = false;
             }
 
-                for(int i=0; i<_args.Length; ++i)
+            for(int i=1; i<_args.Length; ++i)
+            {
+                if (_args[i] == "-s")
                 {
-                    if (_args[i] == "-s")
+                    if(i+1 >= _args.Length-1)
                     {
-
+                        throw new InvalidArgumentsException();
+                    }
+                    else
+                    {
+                        _argsList.Word = _args[i + 1];
+                        _argsList.SearchWord = true;
+                        count += 2;
+                        break;
                     }
                 }
+            }
 
-            return ArgsList;
+            if (count != _args.Length)
+                throw new InvalidArgumentsException();
+
+            return _argsList;
         }
     }
 }

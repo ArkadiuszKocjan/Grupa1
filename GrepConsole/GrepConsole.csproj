@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ArgsList.cs" />
     <Compile Include="ArgumentParser.cs" />
+    <Compile Include="InvalidArgumentsException.cs" />
     <Compile Include="Launcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
