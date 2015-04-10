@@ -9,5 +9,6 @@ namespace DataProvider
     interface IWebClient
     {
         void DownloadFile(string address, string fileName);
+        string DownloadString(string url);
     }
 }

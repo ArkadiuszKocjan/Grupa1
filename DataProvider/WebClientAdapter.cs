@@ -19,5 +19,11 @@ namespace DataProvider
         {
             _webClient.DownloadFile(address,fileName);
         }
+
+
+        public string DownloadString(string url)
+        {
+            _webClient.DownloadString(url);
+        }
     }
 }
