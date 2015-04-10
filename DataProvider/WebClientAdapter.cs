@@ -4,15 +4,21 @@ namespace DataProvider
 {
     class WebClientAdapter : IWebClient
     {
-        WebClient webClient;  
+        readonly WebClient _webClient;  
         WebClientAdapter(WebClient webClient)
         {
-            this.webClient = webClient;
+            this._webClient = webClient;
         }
 
         public void DownloadFile(string address, string fileName)
         {
-            webClient.DownloadFile(address,fileName);
+            _webClient.DownloadFile(address,fileName);
+        }
+
+
+        public string DownloadString(string url)
+        {
+            _webClient.DownloadString(url);
         }
     }
 }
