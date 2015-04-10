@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace GrepConsole
 {
-    class Program
+    class GrepConsoleProgram
     {
-
-        static void Main(string[] args)
+        public GrepConsoleProgram(ArgsList argsList)
         {
             
         }
