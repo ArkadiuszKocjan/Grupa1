@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GrepEngine
 {
@@ -11,9 +12,32 @@ namespace GrepEngine
             InputData = inputData;
         }
 
-        public GrepResult FindLinesContainingSpecifiedString()
+        public IEnumerable<string> GetLinesContainingSpecifiedToken(string token)
         {
-            throw new System.NotImplementedException();
+            return InputData.Where(line => line.Contains(token));
+        }
+
+        public int CountTokenOccurancesInAllLines(string token)
+        {
+            return InputData.Sum(x => CountTokenOccurancesInSingleLine(x, token));
+        }
+
+        private int CountTokenOccurancesInSingleLine(string line, string token)
+        {
+            var currentStartIndex = 0;
+            var occurancesCount = 0;
+
+            while (currentStartIndex < line.Length)
+            {
+                var foundIndex = line.IndexOf(line, currentStartIndex);
+                if (foundIndex == -1)
+                    break;
+
+                currentStartIndex = foundIndex + token.Length;
+                occurancesCount++;
+            }
+
+            return occurancesCount;
         }
     }
 }
