@@ -16,14 +16,23 @@ namespace GrepConsole
         public Launcher(string[] args, ArgumentParser parser)
         {
             _args = args;
-            _parser = new ArgumentParser(args);
+            _parser = parser;
             argsList = new ArgsList();
         }
 
         public void RunProgram() {
             if (_args.Length > 0)
             {
-                argsList = _parser.Parse();
+                try
+                {
+                    argsList = _parser.Parse();
+                }
+                catch(InvalidArgumentsException)
+                {
+                    Console.WriteLine("Specified arguments were not valid.");
+                    Console.ReadKey();
+                }
+                
                 var consoleProgram = new GrepConsoleProgram(argsList);
             }
             else

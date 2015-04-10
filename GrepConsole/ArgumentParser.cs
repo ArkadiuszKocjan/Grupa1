@@ -25,15 +25,27 @@ namespace GrepConsole
             FindCountWordsArgAndEditList();
             FindSerchWordParameterAndEditList();
 
-            if (foundArgsCount != _args.Length)
+            if (ArgumentsAreNotValid())
                 throw new InvalidArgumentsException();
 
             return _argsList;
         }
-
         private void ReadUrlFromArgs()
         {
             _argsList.URL = _args[0];
+        }
+
+        private void FindCountWordsArgAndEditList()
+        {
+            if (_args.Contains("-c"))
+            {
+                _argsList.CountWords = true;
+                foundArgsCount++;
+            }
+            else
+            {
+                _argsList.CountWords = false;
+            }
         }
 
         private void FindSerchWordParameterAndEditList()
@@ -42,7 +54,7 @@ namespace GrepConsole
             {
                 if (_args[i] == "-s")
                 {
-                    if (i + 1 >= _args.Length - 1)
+                    if (i + 1 >= _args.Length)
                     {
                         throw new InvalidArgumentsException();
                     }
@@ -57,17 +69,11 @@ namespace GrepConsole
             }
         }
 
-        private void FindCountWordsArgAndEditList()
+        private bool ArgumentsAreNotValid()
         {
-            if (_args.Contains("-c"))
-            {
-                _argsList.CountWords = true;
-                foundArgsCount++;
-            }
-            else
-            {
-                _argsList.CountWords = false;
-            }
+            if (foundArgsCount < 2 || foundArgsCount != _args.Length)
+                return true;
+            return false;
         }
     }
 }

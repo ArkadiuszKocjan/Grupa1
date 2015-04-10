@@ -11,7 +11,9 @@ namespace GrepConsole
 
         static void Main(string[] args)
         {
-            
+            ArgumentParser Parser = new ArgumentParser(args);
+            Launcher Launcher = new Launcher(args, Parser);
+            Launcher.RunProgram();
         }
     }
 }
