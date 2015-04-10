@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace GrepConsole
 {
-    class Program
+    public class ArgsList
     {
-
-        static void Main(string[] args)
-        {
-            
-        }
+        public bool CountWords { get; set; }
+        public string URL { get; set; }
+        public string Word { get; set; }
     }
 }

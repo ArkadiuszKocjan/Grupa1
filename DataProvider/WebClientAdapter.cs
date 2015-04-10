@@ -23,7 +23,7 @@ namespace DataProvider
 
         public string DownloadString(string url)
         {
-            _webClient.DownloadString(url);
+            return _webClient.DownloadString(url);
         }
     }
 }
