@@ -14,9 +14,8 @@ namespace DataProviderUnitTests
     public class UnitTest1
     {
         Downloader Downloader;
-        string url;
+        string correctUrl = "https://wordpress.org/plugins/about/readme.txt";
         string wrongUrl = "aaaaa.html/test.txt";
-        string targetFileName;
 
         [TestInitialize]
         public void Initialize()
@@ -26,11 +25,28 @@ namespace DataProviderUnitTests
 
         [TestMethod]
         [ExpectedException(typeof(WebException), "Wrong URL specified - WebException should have been thrown")]
-        public void ShouldThrowWebException_whenWrongUrlIsSpecified()
+        public void ShouldThrowWebException_WrongUrlIsSpecified()
         {
-            targetFileName = @"downloadedFile.txt";
+            Downloader.DownloadWebpageAsText(wrongUrl);
+        }
 
-            Downloader.DownloadWebpageAsText(wrongUrl, targetFileName);
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), "No URL specified - ArgumentNullException should have been thrown")]
+        public void ShouldThrowArgumentNullException_AddressIsNull()
+        {
+            Downloader.DownloadWebpageAsText(null);
+        }
+
+        [TestMethod]
+        public void ShouldDownloadFile_EverythingIsValid()
+        {
+            try
+            {
+                Downloader.DownloadWebpageAsText(correctUrl);
+            } catch (Exception)
+            {
+                Assert.Fail();
+            }
         }
     }
 }

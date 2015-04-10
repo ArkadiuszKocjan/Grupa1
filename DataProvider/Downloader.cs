@@ -16,11 +16,18 @@ namespace DataProvider
             client = new WebClient();
         }
 
-        public IEnumerable<string> DownloadWebpageAsText(string url, string targetFileName)
+        public IEnumerable<string> DownloadWebpageAsText(string url)
         {
-            client.DownloadFile(url, targetFileName);
+            string file = client.DownloadString(url);
 
-            return ReadFileToNewList(targetFileName);
+            if (String.IsNullOrEmpty(file))
+            {
+                throw new FileEmptyException();
+            }
+
+            List<string> result = file.Split(new char[] { '\n' }).ToList();
+
+            return result;
         }
 
         private IEnumerable<String> ReadFileToNewList(string filePath)
