@@ -9,5 +9,6 @@ namespace DataProvider
     interface IDownloader
     {
         IEnumerable<string> DownloadWebpageAsText(string url);
+        void CancelRequest();
     }
 }

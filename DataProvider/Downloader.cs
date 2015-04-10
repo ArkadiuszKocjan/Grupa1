@@ -12,7 +12,8 @@ namespace DataProvider
     {
         WebClient client;
 
-        public Downloader() {
+        public Downloader() 
+        {
             client = new WebClient();
         }
 
@@ -28,6 +29,11 @@ namespace DataProvider
             List<string> result = file.Split(new char[] { '\n' }).ToList();
 
             return result;
+        }
+
+        public void CancelRequest()
+        {
+            if(client != null) client.CancelAsync();
         }
 
         private IEnumerable<String> ReadFileToNewList(string filePath)

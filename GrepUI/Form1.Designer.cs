@@ -34,7 +34,7 @@
             this.tokenTextBox = new System.Windows.Forms.TextBox();
             this.resultsListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.startCancelButton = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
@@ -49,10 +49,12 @@
             // 
             // httpAddressTextBox
             // 
-            this.httpAddressTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.httpAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.httpAddressTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.httpAddressTextBox.Location = new System.Drawing.Point(16, 30);
             this.httpAddressTextBox.Name = "httpAddressTextBox";
-            this.httpAddressTextBox.Size = new System.Drawing.Size(286, 20);
+            this.httpAddressTextBox.Size = new System.Drawing.Size(326, 20);
             this.httpAddressTextBox.TabIndex = 1;
             this.httpAddressTextBox.Text = "http://onet.pl";
             // 
@@ -67,18 +69,23 @@
             // 
             // tokenTextBox
             // 
+            this.tokenTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tokenTextBox.Location = new System.Drawing.Point(16, 88);
             this.tokenTextBox.Name = "tokenTextBox";
-            this.tokenTextBox.Size = new System.Drawing.Size(286, 20);
+            this.tokenTextBox.Size = new System.Drawing.Size(326, 20);
             this.tokenTextBox.TabIndex = 3;
             this.tokenTextBox.Text = "input";
             // 
             // resultsListBox
             // 
+            this.resultsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.resultsListBox.FormattingEnabled = true;
             this.resultsListBox.Location = new System.Drawing.Point(15, 141);
             this.resultsListBox.Name = "resultsListBox";
-            this.resultsListBox.Size = new System.Drawing.Size(286, 108);
+            this.resultsListBox.Size = new System.Drawing.Size(326, 160);
             this.resultsListBox.TabIndex = 4;
             // 
             // label3
@@ -90,14 +97,17 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Wyniki";
             // 
-            // cancelButton
+            // startCancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(16, 255);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(287, 32);
-            this.cancelButton.TabIndex = 6;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.startCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startCancelButton.Location = new System.Drawing.Point(16, 316);
+            this.startCancelButton.Name = "startCancelButton";
+            this.startCancelButton.Size = new System.Drawing.Size(327, 32);
+            this.startCancelButton.TabIndex = 6;
+            this.startCancelButton.Text = "Start";
+            this.startCancelButton.UseVisualStyleBackColor = true;
+            this.startCancelButton.Click += new System.EventHandler(this.startCancelButton_Click);
             // 
             // backgroundWorker
             // 
@@ -109,8 +119,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 299);
-            this.Controls.Add(this.cancelButton);
+            this.ClientSize = new System.Drawing.Size(355, 360);
+            this.Controls.Add(this.startCancelButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.resultsListBox);
             this.Controls.Add(this.tokenTextBox);
@@ -132,7 +142,7 @@
         private System.Windows.Forms.TextBox tokenTextBox;
         private System.Windows.Forms.ListBox resultsListBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button startCancelButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
